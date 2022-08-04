@@ -13,7 +13,7 @@
 		FA4C59752899198300F5A1B1 /* newToDoList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA4C59732899198300F5A1B1 /* newToDoList.xcdatamodeld */; };
 		FA4C59772899198500F5A1B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA4C59762899198500F5A1B1 /* Assets.xcassets */; };
 		FA4C597A2899198500F5A1B1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA4C59782899198500F5A1B1 /* LaunchScreen.storyboard */; };
-		FA4C598228991B4600F5A1B1 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4C598128991B4600F5A1B1 /* TableViewController.swift */; };
+		FA4C5986289BF5FD00F5A1B1 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4C5985289BF5FD00F5A1B1 /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +25,7 @@
 		FA4C59762899198500F5A1B1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA4C59792899198500F5A1B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA4C597B2899198500F5A1B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FA4C598128991B4600F5A1B1 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		FA4C5985289BF5FD00F5A1B1 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,7 +60,7 @@
 			children = (
 				FA4C596A2899198300F5A1B1 /* AppDelegate.swift */,
 				FA4C596C2899198300F5A1B1 /* SceneDelegate.swift */,
-				FA4C598128991B4600F5A1B1 /* TableViewController.swift */,
+				FA4C5985289BF5FD00F5A1B1 /* MainViewController.swift */,
 				FA4C59702899198300F5A1B1 /* Main.storyboard */,
 				FA4C59762899198500F5A1B1 /* Assets.xcassets */,
 				FA4C59782899198500F5A1B1 /* LaunchScreen.storyboard */,
@@ -144,7 +144,7 @@
 				FA4C59752899198300F5A1B1 /* newToDoList.xcdatamodeld in Sources */,
 				FA4C596B2899198300F5A1B1 /* AppDelegate.swift in Sources */,
 				FA4C596D2899198300F5A1B1 /* SceneDelegate.swift in Sources */,
-				FA4C598228991B4600F5A1B1 /* TableViewController.swift in Sources */,
+				FA4C5986289BF5FD00F5A1B1 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

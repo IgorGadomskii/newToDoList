@@ -1,6 +1,6 @@
 
 
-import Foundation
+
 import UIKit
 
 struct newTask{
@@ -13,17 +13,12 @@ struct newTask{
         self.date = date
         self.tagColor = tagColor
     }
-    
-//    private init() {}
+
 }
 
 extension newTask {
-    
     static func shared() -> newTask {
         return newTask(name: "", date: .now, tagColor: .gray)
     }
     
-    func getTaskList() -> [newTask] {
-        return []
-    }
 }

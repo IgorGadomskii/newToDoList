@@ -1,9 +1,4 @@
-//
-//  AppDelegate.swift
-//  newToDoList
-//
-//  Created by Macbook on 02.08.2022.
-//
+
 
 import UIKit
 import CoreData

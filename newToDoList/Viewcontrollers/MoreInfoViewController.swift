@@ -22,7 +22,6 @@ class MoreInfoViewController: UIViewController {
         taskName.text = name
         taskTag.backgroundColor = color
         taskDate.text = date.description
-      
     }
     
     override func didReceiveMemoryWarning() {

@@ -76,15 +76,16 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
        }
 
+    @IBAction func addNewTask(_ sender: UIButton) {
+          performSegue(withIdentifier: "addNewTask", sender: self)
+      }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    internal func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "fullInfo", sender: self)
     }
     
     
-    @IBAction func addNewTask(_ sender: UIButton) {
-        performSegue(withIdentifier: "addNewTask", sender: self)
-    }
+  
 }
 
 

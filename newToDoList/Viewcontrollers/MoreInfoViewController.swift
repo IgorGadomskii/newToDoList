@@ -29,24 +29,22 @@ class MoreInfoViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         performSegue(withIdentifier: "saveEditedTask", sender: self)
-        print("1")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "saveEditedTask" {
-            print("2")
+           
             guard let firstDestination = segue.destination as? MainViewController else { return }
             firstDestination.segueFromViewController = "saveEditedTask"
-//            firstDestination.task = task
             task.date = date
             task.tagColor = taskTagView.backgroundColor
             task.name = taskNameLabel.text
         } else if segue.identifier == "editTask" {
             guard let destination = segue.destination as? NewTaskViewController else { return }
-                   destination.segueFromViewController = "editTask"
+                destination.segueFromViewController = "editTask"
                 destination.task.name = taskNameLabel.text
                 destination.task.date = date
-            destination.task.tagColor = taskTagView.backgroundColor
+                destination.task.tagColor = taskTagView.backgroundColor
         }
        
     }

@@ -6,10 +6,7 @@ class NewTaskViewController: UIViewController {
     
     var task = newTask.shared()
     var segueFromViewController = "addNewTask"
-    
-//    var text = ""
-//    var date = Date.now
-//    var color = UIColor.gray
+
     
     @IBOutlet weak var newTaskTextField: UITextField!
     @IBOutlet weak var newTaskTimePicker: UIDatePicker!
@@ -34,8 +31,6 @@ class NewTaskViewController: UIViewController {
         newTaskTextField.text = task.name
         newTaskTimePicker.date = task.date
         mainTag.backgroundColor = task.tagColor
-        
-//        segueFromViewController
         
     }
     

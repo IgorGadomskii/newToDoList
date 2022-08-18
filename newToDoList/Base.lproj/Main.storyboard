@@ -91,7 +91,7 @@
                     <navigationItem key="navigationItem" title="To-Do list" id="RVn-64-nDT"/>
                     <connections>
                         <outlet property="addTaskButton" destination="6lt-iz-nZN" id="Qwl-Ji-Jgo"/>
-                        <outlet property="taskTable" destination="H1U-gP-enz" id="0ym-qh-xmH"/>
+                        <outlet property="taskTableView" destination="H1U-gP-enz" id="0ym-qh-xmH"/>
                         <segue destination="aoc-U8-J0a" kind="presentation" identifier="addNewTask" id="E1s-5n-C5g"/>
                     </connections>
                 </viewController>
@@ -154,9 +154,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
-                        <outlet property="taskDate" destination="y9n-YJ-9za" id="8OG-jc-cax"/>
-                        <outlet property="taskName" destination="Ed7-Qb-VfY" id="QUs-WC-uhK"/>
-                        <outlet property="taskTag" destination="2qr-uo-xWz" id="2Bj-av-ski"/>
+                        <outlet property="taskDateLabel" destination="y9n-YJ-9za" id="8OG-jc-cax"/>
+                        <outlet property="taskNameLabel" destination="Ed7-Qb-VfY" id="QUs-WC-uhK"/>
+                        <outlet property="taskTagView" destination="2qr-uo-xWz" id="2Bj-av-ski"/>
                         <segue destination="lIQ-Mm-pBb" kind="unwind" identifier="saveEditedTask" unwindAction="saveNewDataFor:" id="nqf-31-Z6w"/>
                     </connections>
                 </viewController>
@@ -328,7 +328,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="0aO-0d-VQ6"/>
+        <segue reference="E1s-5n-C5g"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">

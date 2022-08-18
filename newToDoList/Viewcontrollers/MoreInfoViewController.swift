@@ -11,39 +11,42 @@ class MoreInfoViewController: UIViewController {
     var date: Date!
 
 
-    @IBOutlet weak var taskName: UILabel!
-    @IBOutlet weak var taskTag: UIView!
-    @IBOutlet weak var taskDate: UILabel!
+    @IBOutlet weak var taskNameLabel: UILabel!
+    @IBOutlet weak var taskTagView: UIView!
+    @IBOutlet weak var taskDateLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        taskTag.layer.cornerRadius = 30
-        taskName.text = name
-        taskTag.backgroundColor = color
-        taskDate.text = date.description
+        taskTagView.layer.cornerRadius = 30
+        taskNameLabel.text = name
+        taskTagView.backgroundColor = color
+        taskDateLabel.text = date.description
+       
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
+   
     
     override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
         performSegue(withIdentifier: "saveEditedTask", sender: self)
+        print("1")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "saveEditedTask" {
+            print("2")
             guard let firstDestination = segue.destination as? MainViewController else { return }
             firstDestination.segueFromViewController = "saveEditedTask"
-            firstDestination.task = task
+//            firstDestination.task = task
+            task.date = date
+            task.tagColor = taskTagView.backgroundColor
+            task.name = taskNameLabel.text
         } else if segue.identifier == "editTask" {
             guard let destination = segue.destination as? NewTaskViewController else { return }
                    destination.segueFromViewController = "editTask"
-                   destination.task.name = name
-                   destination.task.date = date
-                   destination.task.tagColor = color
+                destination.task.name = taskNameLabel.text
+                destination.task.date = date
+            destination.task.tagColor = taskTagView.backgroundColor
         }
        
     }
@@ -52,9 +55,9 @@ class MoreInfoViewController: UIViewController {
         guard unwindSegue.identifier == "editNewTask" else {return}
         guard let source = unwindSegue.source as? NewTaskViewController else {return}
         task = source.task
-        taskName.text = task.name
-        taskDate.text = task.date.description
-        taskTag.backgroundColor = task.tagColor
+        taskNameLabel.text = task.name
+        taskTagView.backgroundColor = task.tagColor
+        taskDateLabel.text = task.date.description
     }
     
 }

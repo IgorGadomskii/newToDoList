@@ -62,7 +62,10 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             guard unwindSegue.identifier == "saveEditedTask" else { return }
             guard let source = unwindSegue.source as? MoreInfoViewController else { return }
             task = source.task
-            
+            if let indexPath = taskTableView.indexPathForSelectedRow {
+                taskList.remove(at: indexPath.row)
+                taskList.insert(task, at: indexPath.row)
+            }
             taskTableView.reloadData()
         } else if segueFromViewController == "saveNewTask" {
             guard unwindSegue.identifier == "saveNewTask" else {return}

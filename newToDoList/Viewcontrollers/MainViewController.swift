@@ -37,7 +37,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
    
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "addNewTask" {
             guard let firstDestination = segue.destination as? NewTaskViewController else {return}
@@ -52,8 +51,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             }
         }
     }
-    
-    
     
     
     @IBAction func saveNewData(for unwindSegue: UIStoryboardSegue) {
@@ -76,9 +73,11 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
        }
 
+    
     @IBAction func addNewTask(_ sender: UIButton) {
           performSegue(withIdentifier: "addNewTask", sender: self)
       }
+    
     
     internal func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "fullInfo", sender: self)

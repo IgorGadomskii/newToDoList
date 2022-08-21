@@ -11,6 +11,7 @@ class MyCustomTableViewCell: UITableViewCell {
         super.awakeFromNib()
         colorTegView.layer.cornerRadius = 10
     }
-
+    
+    
 
 }

@@ -7,6 +7,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var task = newTask.shared()
     
     var taskList: [newTask] = []
+    var doneTaskList: [newTask] = []
     
     var segueFromViewController: String!
     
@@ -21,20 +22,9 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         taskTableView.delegate = self
         taskTableView.dataSource = self
         
+        
     }
     
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return taskList.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MyCustomTableViewCell
-        let task = taskList[indexPath.row]
-        cell.taskLabel.text = task.name
-        cell.colorTegView.backgroundColor = task.tagColor
-        return cell
-    }
     
    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -55,7 +45,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBAction func saveNewData(for unwindSegue: UIStoryboardSegue) {
         if segueFromViewController == "saveEditedTask" {
-            print("3")
             guard unwindSegue.identifier == "saveEditedTask" else { return }
             guard let source = unwindSegue.source as? MoreInfoViewController else { return }
             task = source.task
@@ -79,11 +68,51 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
       }
     
     
+
+    internal func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return taskList.count
+    }
+    
+    internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MyCustomTableViewCell
+        let task = taskList[indexPath.row]
+        cell.taskLabel.text = task.name
+        cell.colorTegView.backgroundColor = task.tagColor
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let doneAction = UIContextualAction.init(style: .normal, title: "Done") { _,_,_ in
+            self.taskTableView.beginUpdates()
+            let doneTask = self.taskList.remove(at: indexPath.row)
+            self.doneTaskList.insert(doneTask, at: 0)
+            self.taskTableView.deleteRows(at: [indexPath], with: .fade)
+            self.taskTableView.endUpdates()
+    
+        }
+        
+        return UISwipeActionsConfiguration.init(actions: [doneAction])
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction.init(style: .destructive, title: "Delete") { _, _, _ in
+            self.taskTableView.beginUpdates()
+            self.taskList.remove(at: indexPath.row)
+            self.taskTableView.deleteRows(at: [indexPath], with: .fade)
+            self.taskTableView.endUpdates()
+        }
+        
+        return UISwipeActionsConfiguration.init(actions: [deleteAction])
+    }
+    
     internal func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "fullInfo", sender: self)
     }
-    
-    
   
 }
 

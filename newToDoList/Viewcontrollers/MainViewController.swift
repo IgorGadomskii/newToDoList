@@ -21,7 +21,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         super.viewDidLoad()
         
         addTaskButton.layer.cornerRadius = 35
-        
         taskTableView.delegate = self
         taskTableView.dataSource = self
         

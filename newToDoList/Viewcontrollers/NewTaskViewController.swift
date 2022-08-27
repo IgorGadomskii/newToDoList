@@ -4,8 +4,10 @@ import UIKit
 
 class NewTaskViewController: UIViewController {
     
-    var task = newTask.shared()
     var segueFromViewController = "addNewTask"
+    
+    var newName: String!
+    var newDate: Date = Date.now
 
     
     @IBOutlet weak var newTaskTextField: UITextField!
@@ -28,9 +30,9 @@ class NewTaskViewController: UIViewController {
         greenTagButton.layer.cornerRadius = 20
         blueTagButton.layer.cornerRadius = 20
         
-        newTaskTextField.text = task.name
-        newTaskTimePicker.date = task.date
-        mainTag.backgroundColor = task.tagColor
+        newTaskTextField.text = newName
+        newTaskTimePicker.date = newDate
+//        mainTag.backgroundColor = task.tagColor
         
     }
     
@@ -72,10 +74,10 @@ class NewTaskViewController: UIViewController {
     }
     
     private func saveTask() {
-        task.tagColor = mainTag.backgroundColor
-        task.date = newTaskTimePicker.date
+//        task.tagColor = mainTag.backgroundColor
+        newDate = newTaskTimePicker.date
         if newTaskTextField.text?.isEmpty == false {
-            task.name = newTaskTextField.text
+            newName = newTaskTextField.text
         } else { return }
     }
 }

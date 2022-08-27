@@ -4,7 +4,7 @@ import UIKit
 
 class MoreInfoViewController: UIViewController {
     
-    var task = newTask.shared()
+
     
     var name: String!
     var color: UIColor!
@@ -36,15 +36,15 @@ class MoreInfoViewController: UIViewController {
            
             guard let firstDestination = segue.destination as? MainViewController else { return }
             firstDestination.segueFromViewController = "saveEditedTask"
-            task.date = date
-            task.tagColor = taskTagView.backgroundColor
-            task.name = taskNameLabel.text
+            firstDestination.date = date
+//            task.tagColor = taskTagView.backgroundColor
+            firstDestination.name = taskNameLabel.text
         } else if segue.identifier == "editTask" {
             guard let destination = segue.destination as? NewTaskViewController else { return }
                 destination.segueFromViewController = "editTask"
-                destination.task.name = taskNameLabel.text
-                destination.task.date = date
-                destination.task.tagColor = taskTagView.backgroundColor
+                destination.newName = taskNameLabel.text
+                destination.newDate = date
+//                destination.task.tagColor = taskTagView.backgroundColor
         }
        
     }
@@ -52,10 +52,10 @@ class MoreInfoViewController: UIViewController {
     @IBAction func editData(for unwindSegue: UIStoryboardSegue, sender: Any?) {
         guard unwindSegue.identifier == "editNewTask" else {return}
         guard let source = unwindSegue.source as? NewTaskViewController else {return}
-        task = source.task
-        taskNameLabel.text = task.name
-        taskTagView.backgroundColor = task.tagColor
-        taskDateLabel.text = task.date.description
+        name = source.newName
+//        taskTagView.backgroundColor = task.tagColor
+        date = source.newDate
+        viewDidLoad()
     }
     
 }

@@ -3,11 +3,14 @@
 import UIKit
 
 class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+   
+    var name: String!
+    var date: Date!
     
-    var task = newTask.shared()
+    var taskList = StorageManager.shared.taskList
+    let context = StorageManager.shared.context
     
-    var taskList: [newTask] = []
-    var doneTaskList: [newTask] = []
+    var doneTaskList: [NewTask] = []
     
     var segueFromViewController: String!
     
@@ -22,7 +25,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         taskTableView.delegate = self
         taskTableView.dataSource = self
         
-        
+        fetchData()
     }
     
     
@@ -36,7 +39,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 guard let destination = segue.destination as? MoreInfoViewController else { return }
                 let interstedTask = taskList[indexPath.row]
                 destination.name = interstedTask.name
-                destination.color = interstedTask.tagColor
+//                destination.color = UIColor(interstedTask.color)
                 destination.date = interstedTask.date
             }
         }
@@ -47,20 +50,22 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         if segueFromViewController == "saveEditedTask" {
             guard unwindSegue.identifier == "saveEditedTask" else { return }
             guard let source = unwindSegue.source as? MoreInfoViewController else { return }
-            task = source.task
             if let indexPath = taskTableView.indexPathForSelectedRow {
-                taskList.remove(at: indexPath.row)
-                taskList.insert(task, at: indexPath.row)
+                name = source.name
+                date = source.date
+                let task = taskList[indexPath.row]
+                StorageManager.shared.edit(name, date, for: task)
             }
             taskTableView.reloadData()
         } else if segueFromViewController == "saveNewTask" {
             guard unwindSegue.identifier == "saveNewTask" else {return}
             guard let source = unwindSegue.source as? NewTaskViewController else {return}
-            task = source.task
-            taskList.insert(task, at: 0)
+            name = source.newName
+            date = source.newDate
+            save(name, date)
             taskTableView.reloadData()
         }
-       }
+    }
 
     
     @IBAction func addNewTask(_ sender: UIButton) {
@@ -69,16 +74,34 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     
 
-    internal func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return taskList.count
+     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+         taskList.count
     }
     
     internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MyCustomTableViewCell
         let task = taskList[indexPath.row]
         cell.taskLabel.text = task.name
-        cell.colorTegView.backgroundColor = task.tagColor
         return cell
+    }
+    
+    private func fetchData() {
+            StorageManager.shared.fetchData(completion: {result in
+                switch result {
+                case .success(let taskList):
+                    self.taskList = taskList
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            })
+        }
+    
+    private func save(_ taskName: String, _ taskDate: Date) {
+        StorageManager.shared.save(taskName, taskDate) { task in
+            taskList.insert(task, at: 0)
+            let cellIndex = IndexPath(row: taskList.count - 1 , section: 0)
+            self.taskTableView.insertRows(at: [cellIndex], with: .automatic)
+        }
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -102,6 +125,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction.init(style: .destructive, title: "Delete") { _, _, _ in
             self.taskTableView.beginUpdates()
+            let task = self.taskList[indexPath.row]
+            StorageManager.shared.delete(task)
             self.taskList.remove(at: indexPath.row)
             self.taskTableView.deleteRows(at: [indexPath], with: .fade)
             self.taskTableView.endUpdates()
@@ -110,7 +135,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return UISwipeActionsConfiguration.init(actions: [deleteAction])
     }
     
-    internal func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "fullInfo", sender: self)
     }
   

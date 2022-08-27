@@ -19,6 +19,7 @@ class MoreInfoViewController: UIViewController {
         super.viewDidLoad()
     
         taskTagView.layer.cornerRadius = 30
+        
         taskNameLabel.text = name
         taskTagView.backgroundColor = color
         taskDateLabel.text = date.description
@@ -37,13 +38,16 @@ class MoreInfoViewController: UIViewController {
             guard let firstDestination = segue.destination as? MainViewController else { return }
             firstDestination.segueFromViewController = "saveEditedTask"
             firstDestination.date = date
+            
 //            task.tagColor = taskTagView.backgroundColor
+            
             firstDestination.name = taskNameLabel.text
         } else if segue.identifier == "editTask" {
             guard let destination = segue.destination as? NewTaskViewController else { return }
                 destination.segueFromViewController = "editTask"
                 destination.newName = taskNameLabel.text
                 destination.newDate = date
+            
 //                destination.task.tagColor = taskTagView.backgroundColor
         }
        

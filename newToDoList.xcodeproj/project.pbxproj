@@ -92,8 +92,8 @@
 		FA4C59692899198300F5A1B1 /* newToDoList */ = {
 			isa = PBXGroup;
 			children = (
+				FA62534D28BB527A00ABB729 /* App */,
 				FA62534A28BA5ED900ABB729 /* Storage Manager */,
-				FA62534728B22EE100ABB729 /* Support */,
 				FA62534928B22F1600ABB729 /* Storybords */,
 				FA08656028ABFFDC0083394B /* Viewcontrollers */,
 				FA08656228AC00040083394B /* Custom Elements */,
@@ -102,15 +102,6 @@
 				FA4C59732899198300F5A1B1 /* newToDoList.xcdatamodeld */,
 			);
 			path = newToDoList;
-			sourceTree = "<group>";
-		};
-		FA62534728B22EE100ABB729 /* Support */ = {
-			isa = PBXGroup;
-			children = (
-				FA4C596C2899198300F5A1B1 /* SceneDelegate.swift */,
-				FA4C596A2899198300F5A1B1 /* AppDelegate.swift */,
-			);
-			path = Support;
 			sourceTree = "<group>";
 		};
 		FA62534928B22F1600ABB729 /* Storybords */ = {
@@ -128,6 +119,15 @@
 				FA62534B28BA5F6600ABB729 /* StorageManager.swift */,
 			);
 			path = "Storage Manager";
+			sourceTree = "<group>";
+		};
+		FA62534D28BB527A00ABB729 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				FA4C596A2899198300F5A1B1 /* AppDelegate.swift */,
+				FA4C596C2899198300F5A1B1 /* SceneDelegate.swift */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -8,6 +8,7 @@ class NewTaskViewController: UIViewController {
     
     var newName: String!
     var newDate: Date = Date.now
+    var hexColor: String = "#E8E6E6"
 
     
     @IBOutlet weak var newTaskTextField: UITextField!
@@ -32,52 +33,42 @@ class NewTaskViewController: UIViewController {
         
         newTaskTextField.text = newName
         newTaskTimePicker.date = newDate
-//        mainTag.backgroundColor = task.tagColor
-        
+        mainTag.backgroundColor = UIColor(hex: hexColor)
     }
     
     
     @IBAction func redTagButtonPressed(_ sender: UIButton) {
-        mainTag.backgroundColor = .red
+        hexColor = "#D61B1B"
+        mainTag.backgroundColor = UIColor(hex: hexColor)
     }
     
     @IBAction func greenTagButtonPressed(_ sender: UIButton) {
-        mainTag.backgroundColor = .green
+        hexColor = "#46A055"
+        mainTag.backgroundColor = UIColor(hex: hexColor)
     }
     
     @IBAction func blueTagButtonPressed(_ sender: UIButton) {
-        mainTag.backgroundColor = .blue
+        hexColor = "#5E94E4"
+        mainTag.backgroundColor = UIColor(hex: hexColor)
     }
     
     @IBAction func yellowTagButtonPressed(_ sender: UIButton) {
-        mainTag.backgroundColor = .yellow
-    }
-    
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "saveNewTask" {
-            guard let destination = segue.destination as? MainViewController else { return }
-            destination.segueFromViewController = "saveNewTask"
-            saveTask()
-        } else if segue.identifier == "editNewTask" {
-            saveTask()
-        }
+        hexColor = "#FFE91F"
+        mainTag.backgroundColor = UIColor(hex: hexColor)
     }
     
     
     @IBAction func pressSaveButton(_ sender: UIButton) {
-        if segueFromViewController == "addNewTask" {
-            performSegue(withIdentifier: "saveNewTask", sender: self)
-        } else if segueFromViewController == "editTask" {
-            performSegue(withIdentifier: "editNewTask", sender: self)
-        } 
-    }
-    
-    private func saveTask() {
-//        task.tagColor = mainTag.backgroundColor
         newDate = newTaskTimePicker.date
         if newTaskTextField.text?.isEmpty == false {
             newName = newTaskTextField.text
         } else { return }
+        if segueFromViewController == "addNewTask" {
+            performSegue(withIdentifier: "saveNewTask", sender: self)
+        } else if segueFromViewController == "editTask" {
+            performSegue(withIdentifier: "editNewTask", sender: self)
+            segueFromViewController = "addNewTask"
+        }
     }
+    
 }

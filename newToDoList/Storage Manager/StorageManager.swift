@@ -47,11 +47,12 @@ extension StorageManager {
         }
     }
     
-    func save(_ taskName: String, _ taskDate: Date, completion: (NewTask) -> Void) {
+    func save(_ taskName: String, _ taskDate: Date, _ taskColor: String, completion: (NewTask) -> Void) {
         guard let entityDescription = NSEntityDescription.entity(forEntityName: "NewTask", in: context) else { return }
         guard let task = NSManagedObject(entity: entityDescription, insertInto: context) as? NewTask else { return }
         task.name = taskName
         task.date = taskDate
+        task.color = taskColor
         completion(task)
         saveContext()
     }
@@ -61,9 +62,10 @@ extension StorageManager {
         saveContext()
     }
     
-    func edit(_ taskName: String,_  taskDate: Date, for editedTask: NewTask){
+    func edit(_ taskName: String,_  taskDate: Date,_ taskColor: String, for editedTask: NewTask){
         editedTask.name = taskName
         editedTask.date = taskDate
+        editedTask.color = taskColor
         saveContext()
     }
     

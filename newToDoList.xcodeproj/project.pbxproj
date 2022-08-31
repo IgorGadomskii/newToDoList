@@ -18,6 +18,7 @@
 		FA4C597A2899198500F5A1B1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA4C59782899198500F5A1B1 /* LaunchScreen.storyboard */; };
 		FA4C5986289BF5FD00F5A1B1 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4C5985289BF5FD00F5A1B1 /* MainViewController.swift */; };
 		FA62534C28BA5F6600ABB729 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA62534B28BA5F6600ABB729 /* StorageManager.swift */; };
+		FA62537E28BF4AB300ABB729 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA62537D28BF4AB300ABB729 /* UIColorExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		FA4C597B2899198500F5A1B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA4C5985289BF5FD00F5A1B1 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		FA62534B28BA5F6600ABB729 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		FA62537D28BF4AB300ABB729 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 		FA4C59692899198300F5A1B1 /* newToDoList */ = {
 			isa = PBXGroup;
 			children = (
+				FA62537C28BF4A8C00ABB729 /* Extensioins */,
 				FA62534D28BB527A00ABB729 /* App */,
 				FA62534A28BA5ED900ABB729 /* Storage Manager */,
 				FA62534928B22F1600ABB729 /* Storybords */,
@@ -128,6 +131,14 @@
 				FA4C596C2899198300F5A1B1 /* SceneDelegate.swift */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		FA62537C28BF4A8C00ABB729 /* Extensioins */ = {
+			isa = PBXGroup;
+			children = (
+				FA62537D28BF4AB300ABB729 /* UIColorExtension.swift */,
+			);
+			path = Extensioins;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -206,6 +217,7 @@
 				FA1A724428A0191500BC68F5 /* MyCustomTableViewCell.swift in Sources */,
 				FA62534C28BA5F6600ABB729 /* StorageManager.swift in Sources */,
 				FA4C596B2899198300F5A1B1 /* AppDelegate.swift in Sources */,
+				FA62537E28BF4AB300ABB729 /* UIColorExtension.swift in Sources */,
 				FA4C596D2899198300F5A1B1 /* SceneDelegate.swift in Sources */,
 				FA36887A28A2A51A00A9188A /* MoreInfoViewController.swift in Sources */,
 				FA4C5986289BF5FD00F5A1B1 /* MainViewController.swift in Sources */,

@@ -48,7 +48,7 @@
                                         <connections>
                                             <outlet property="colorTegView" destination="uXd-aY-zrO" id="ay9-Vg-akj"/>
                                             <outlet property="taskLabel" destination="HWj-eD-jhW" id="uFW-4z-DeH"/>
-                                            <segue destination="J9d-YU-yVH" kind="presentation" identifier="fullInfo" id="ZIv-ZG-9gg"/>
+                                            <segue destination="J9d-YU-yVH" kind="presentation" identifier="fullInfo" id="1az-5T-NC5"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
